@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Timón - Restaurante en Sanxenxo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Vexel - Páginas Web que Hacen Crecer tu Negocio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,18 +15,20 @@
         }
 
         :root {
-            --primary-orange: #E67E22;
-            --primary-black: #000000;
-            --primary-white: #FFFFFF;
-            --hover-orange: #D35400;
-            --light-gray: #f8f9fa;
+            --primary-color: #262626;
+            --secondary-color: #F0F0F0;
+            --accent-color: #FF007F;
+            --white: #FFFFFF;
+            --text-light: #6B7280;
+            --gradient-1: linear-gradient(135deg, #FF007F 0%, #FF0099 100%);
+            --gradient-2: linear-gradient(135deg, #262626 0%, #404040 100%);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--primary-white);
-            background-color: var(--primary-black);
+            color: var(--primary-color);
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -36,687 +39,734 @@
 
         /* Header */
         .header {
+            background: rgba(38, 38, 38, 0.95);
+            backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(255, 0, 127, 0.1);
+            border-bottom: 1px solid rgba(255, 0, 127, 0.2);
         }
 
-        .header.scrolled {
-            background: var(--primary-black);
-            box-shadow: 0 2px 20px rgba(230, 126, 34, 0.3);
-        }
-
-        .nav-container {
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-orange);
+            color: var(--white);
             text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-menu a {
-            color: var(--primary-white);
             text-decoration: none;
+            color: var(--white);
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
-            color: var(--primary-orange);
+            color: var(--accent-color);
         }
 
-        .phone-contact {
-            background: var(--primary-orange);
-            color: var(--primary-white);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .nav-menu a:hover::before {
+            width: 100%;
         }
 
-        .phone-contact:hover {
-            background: var(--hover-orange);
-            transform: translateY(-2px);
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--white);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('images/header_restaurante.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--gradient-2);
+            color: white;
+            padding: 10rem 0 8rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 127, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 127, 0.1) 0%, transparent 50%);
         }
 
-        .hero-content .tagline {
-            font-size: 1.5rem;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 2rem;
-            color: var(--primary-orange);
-            font-weight: 300;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--white);
         }
 
         .cta-button {
-            background: var(--primary-orange);
-            color: var(--primary-white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            background: var(--gradient-1);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            background: var(--hover-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4);
         }
 
-        /* Experience Section */
-        .experience {
-            padding: 6rem 0;
-            background: var(--primary-black);
+        .hero-image {
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        .mockup-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 3rem;
+            perspective: 1500px;
+        }
+
+        .device-mockup {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .device-mockup::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-1);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .device-mockup:hover::before {
+            opacity: 1;
+        }
+
+        .device-mockup:hover {
+            transform: rotateY(0deg) scale(1.08) translateY(-20px);
+        }
+
+        .device-mockup.desktop {
+            width: 450px;
+            height: 280px;
+            transform: rotateY(-8deg);
+        }
+
+        .device-mockup.tablet {
+            width: 220px;
+            height: 290px;
+            transform: rotateY(12deg) scale(0.85);
+        }
+
+        .device-mockup.mobile {
+            width: 140px;
+            height: 240px;
+            transform: rotateY(20deg) scale(0.75);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            height: 25px;
+            background: var(--accent-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(255, 0, 127, 0.3);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 0;
+            background: var(--secondary-color);
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-orange);
-            font-weight: 600;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .experience-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(230, 126, 34, 0.2);
-        }
-
-        .experience-icon {
             font-size: 3rem;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
         }
 
-        .experience-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-orange);
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Suggestions Section */
-        .suggestions {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(230,126,34,0.1));
-        }
-
-        .suggestions-grid {
+        /* NEW CSS for Process Cards */
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .suggestion-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .suggestion-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.3);
-        }
-
-        .suggestion-image {
-            height: 200px;
-            background: linear-gradient(45deg, #333, #555);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-        }
-
-        .suggestion-content {
-            padding: 1.5rem;
-        }
-
-        .suggestion-content h4 {
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Location Section */
-        .location {
-            padding: 6rem 0;
-            background: var(--primary-black);
-        }
-
-        .location-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
-            align-items: center;
+            text-align: center;
         }
 
-        .location-info h3 {
-            color: var(--primary-orange);
-            font-size: 1.8rem;
+        .process-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(255, 0, 127, 0.15);
+        }
+
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);
+        }
+
+        .process-icon svg {
+            width: 35px;
+            height: 35px;
+        }
+
+        .process-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
-        .location-address {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .map-placeholder {
-            height: 300px;
-            background: #333;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
+        .process-card p {
+            color: var(--text-light);
+            line-height: 1.7;
             font-size: 1.1rem;
         }
 
-        /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(230,126,34,0.1), rgba(0,0,0,0.9));
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* End of NEW CSS */
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 0;
+            background: var(--primary-color);
+            color: var(--white);
         }
 
-        .gallery-grid {
+        .portfolio .section-title {
+            color: var(--white);
+        }
+
+        .portfolio .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            aspect-ratio: 1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(230, 126, 34, 0.4);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(230,126,34,0.7));
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay i {
-            font-size: 2.5rem;
-            color: var(--primary-white);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            animation: lightboxZoom 0.3s ease;
-        }
-
-        .lightbox img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: var(--primary-orange);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: var(--hover-orange);
-            transform: rotate(90deg);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(230, 126, 34, 0.8);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-nav:hover {
-            background: var(--primary-orange);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .lightbox-prev {
-            left: -60px;
-        }
-
-        .lightbox-next {
-            right: -60px;
-        }
-
-        @keyframes lightboxZoom {
-            from { transform: scale(0.7); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* Cocktail Section */
-        .cocktail-section {
-            padding: 6rem 0;
-            display: none;
-        }
-
-        .cocktail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .cocktail-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .cocktail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.2);
-        }
-
-        .cocktail-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary-orange), var(--hover-orange));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .cocktail-info {
-            padding: 1.5rem;
-        }
-
-        .cocktail-info h4 {
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Menu Section */
-        .menu-section {
-            padding: 6rem 0;
-            display: none;
-        }
-
-        .menu-categories {
-            margin-top: 3rem;
-        }
-
-        .menu-category {
-            margin-bottom: 4rem;
-        }
-
-        .menu-category h3 {
-            color: var(--primary-orange);
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--primary-orange);
-            padding-bottom: 0.5rem;
-        }
-
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2);
-        }
-
-        .menu-item-image {
-            height: 150px;
-            background: linear-gradient(45deg, #333, #555);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-        }
-
-        .menu-item-content {
-            padding: 1.5rem;
-        }
-
-        .menu-item-content h4 {
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        .menu-item-price {
-            color: var(--primary-orange);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-        }
-
-        .allergens {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .allergen-icon {
-            width: 25px;
-            height: 25px;
-            background: var(--primary-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 0;
-            display: none;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 4rem;
         }
 
-        .contact-info h3 {
-            color: var(--primary-orange);
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent-color);
+            box-shadow: 0 30px 60px rgba(255, 0, 127, 0.2);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            /* Nuevas propiedades para la imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .portfolio-question {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .portfolio-description {
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 2rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-details {
-            margin-bottom: 3rem;
-        }
-
-        .contact-details p {
-            margin-bottom: 1rem;
+            line-height: 1.7;
             font-size: 1.1rem;
         }
 
-        .schedule {
-            margin-top: 2rem;
+        .portfolio-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
         }
 
-        .schedule h4 {
-            color: var(--primary-orange);
+        .portfolio-features li {
+            padding: 0.7rem 0;
+            position: relative;
+            padding-left: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .portfolio-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-cta {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
+        }
+
+        .portfolio-cta:hover {
+            transform: translateX(8px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 0, 127, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 0;
+            background: var(--secondary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(255, 0, 127, 0.15);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.2rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 8rem 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(255, 0, 127, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 0, 127, 0.15) 0%, transparent 50%);
+        }
+
+        .final-cta .section-title {
+            color: var(--white);
+        }
+
+        .final-cta .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-form {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 4rem;
+            max-width: 700px;
+            margin: 4rem auto 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--primary-orange);
-            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--white);
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #333;
-            border-radius: 8px;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             background: rgba(255, 255, 255, 0.1);
-            color: var(--primary-white);
-            font-family: inherit;
+            backdrop-filter: blur(10px);
+            font-size: 1.1rem;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(230, 126, 34, 0.3);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 0, 127, 0.2);
         }
 
-        .privacy-notice {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin-top: 1rem;
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--gradient-1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.4);
+        }
+
+        .guarantee {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* Footer */
         .footer {
-            background: #111;
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-section h4 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
+        .footer-section p,
         .footer-section a {
-            color: #ccc;
+            color: #D1D5DB;
             text-decoration: none;
+            margin-bottom: 0.8rem;
             display: block;
-            margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: var(--primary-orange);
+            color: var(--accent-color);
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--primary-orange);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: var(--hover-orange);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.3);
         }
 
         .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 2rem;
             text-align: center;
-            color: #999;
+            padding-top: 3rem;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
         }
 
-        .footer-phone {
-            background: var(--primary-orange);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--primary-white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-menu-btn {
+            .menu-toggle {
                 display: block;
             }
 
@@ -725,720 +775,573 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-                width: 100%;
-                background: var(--primary-black);
+                right: 0;
+                background: var(--primary-color);
                 flex-direction: column;
                 padding: 2rem;
-                gap: 1rem;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
             }
 
             .nav-menu.active {
                 display: flex;
             }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero h1 {
+                font-size: 2.8rem;
             }
 
-            .hero-content .tagline {
+            .hero p {
                 font-size: 1.2rem;
             }
 
-            .experience-grid {
+            .mockup-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .device-mockup {
+                transform: none !important;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .portfolio-grid,
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .location-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
+            .cta-form {
+                padding: 2.5rem;
+                margin: 3rem 1rem 0;
             }
         }
 
-        /* Section visibility */
-        .section {
-            display: none;
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        .section.active {
-            display: block;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.4s; }
+        .fade-in:nth-child(4) { animation-delay: 0.6s; }
+
+        /* Floating animation for devices */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .device-mockup {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .device-mockup.tablet {
+            animation-delay: 1s;
+        }
+
+        .device-mockup.mobile {
+            animation-delay: 2s;
+        }
+
+        /* Ripple effect */
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="nav-container">
-                <a href="#" class="logo">El Timón</a>
-                <nav>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="#" onclick="showSection('home')">Inicio</a></li>
-                        <li><a href="#" onclick="showSection('gallery')">Galería</a></li>
-                        <li><a href="#" onclick="showSection('cocktail')">Coctelería</a></li>
-                        <li><a href="#" onclick="showSection('menu')">Carta</a></li>
-                        <li><a href="#" onclick="showSection('contact')">Contacto</a></li>
-                    </ul>
-                </nav>
-                <a href="tel:657777977" class="phone-contact">
-                    <i class="fas fa-phone"></i> 657 777 977
-                </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#inicio" class="logo">Vexel</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#ejemplos">Ejemplos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>El Timón</h1>
-                    <p class="tagline">El combinado perfecto: sabor, diseño y disfrute</p>
-                    <a href="#" class="cta-button" onclick="showSection('contact')">Reservar Mesa</a>
-                </div>
-            </section>
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Creamos páginas web que hacen crecer tu negocio</h1>
+                <p>Diseños profesionales para negocios que necesitan destacar online</p>
+                <a href="#ejemplos" class="cta-button">Ver ejemplos de nuestro trabajo</a>
 
-            <!-- Experience Section -->
-            <section class="experience">
-                <div class="container">
-                    <h2 class="section-title">Vive la experiencia</h2>
-                    <div class="experience-grid">
-                        <div class="experience-card">
-                            <div class="experience-icon">
-                                <i class="fas fa-fire"></i>
-                            </div>
-                            <h3>Sabor</h3>
-                            <p>Nuestra cocina de brasa ofrece sabores auténticos y únicos, preparados con ingredientes frescos y técnicas tradicionales que realzan cada plato.</p>
+                <div class="hero-image">
+                    <div class="mockup-container">
+                        <div class="device-mockup desktop">
+                            <div class="screen"></div>
                         </div>
-                        <div class="experience-card">
-                            <div class="experience-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <h3>Diseño</h3>
-                            <p>Un local moderno y elegante que combina la estética contemporánea con la calidez de un ambiente acogedor junto al mar.</p>
+                        <div class="device-mockup tablet">
+                            <div class="screen"></div>
                         </div>
-                        <div class="experience-card">
-                            <div class="experience-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h3>Disfrute</h3>
-                            <p>Ambiente acogedor donde cada momento se convierte en una experiencia memorable, ideal para cualquier ocasión especial.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Suggestions Section -->
-            <section class="suggestions">
-                <div class="container">
-                    <h2 class="section-title">Sugerencias</h2>
-                    <div class="suggestions-grid">
-                        <div class="suggestion-card">
-                            <div class="suggestion-image">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <div class="suggestion-content">
-                                <h4>Pulpo a la Brasa</h4>
-                                <p>Pulpo gallego cocinado a la perfección en nuestra parrilla, con aceite de oliva virgen extra y pimentón dulce.</p>
-                            </div>
-                        </div>
-                        <div class="suggestion-card">
-                            <div class="suggestion-image">
-                                <i class="fas fa-fish"></i>
-                            </div>
-                            <div class="suggestion-content">
-                                <h4>Lubina Salvaje</h4>
-                                <p>Lubina fresca del día preparada con sal marina y hierbas aromáticas, acompañada de verduras de temporada.</p>
-                            </div>
-                        </div>
-                        <div class="suggestion-card">
-                            <div class="suggestion-image">
-                                <i class="fas fa-wine-glass"></i>
-                            </div>
-                            <div class="suggestion-content">
-                                <h4>Maridaje Especial</h4>
-                                <p>Descubre nuestra selección de vinos gallegos perfectamente maridados con nuestros platos estrella.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Location Section -->
-            <section class="location">
-                <div class="container">
-                    <h2 class="section-title">Ubicación</h2>
-                    <div class="location-content">
-                        <div class="location-info">
-                            <h3>En la playa de Silgar</h3>
-                            <div class="location-address">
-                                <p><i class="fas fa-map-marker-alt"></i> Paseo Praia de Silgar, 34</p>
-                                <p>36960 Sanxenxo, Pontevedra</p>
-                                <p><i class="fas fa-phone"></i> 657 777 977</p>
-                                <p><i class="fas fa-envelope"></i> info@koalarestclub.com</p>
-                            </div>
-                            <a href="#" class="cta-button">Ver Vista 360º</a>
-                        </div>
-                        <div class="map-placeholder">
-                            <p><i class="fas fa-map"></i> Mapa Interactivo de Google Maps</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="section gallery-section">
-            <div class="container">
-                <h2 class="section-title">Nuestra Galería</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="images/ejemplo1.jpg" alt="Ambiente del restaurante El Timón">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(1)">
-                        <img src="images/ejemplo2.jpg" alt="Platos especiales de El Timón">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(2)">
-                        <img src="images/ejemplo3.jpg" alt="Terraza con vista al mar">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(3)">
-                        <img src="images/ejemplo4.jpg" alt="Interior del restaurante">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(4)">
-                        <img src="images/ejemplo5.jpg" alt="Cocina a la brasa">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
+                        <div class="device-mockup mobile">
+                            <div class="screen"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Cocktail Section -->
-        <section id="cocktail" class="section cocktail-section">
-            <div class="container">
-                <h2 class="section-title">Nuestra Coctelería</h2>
-                <div class="cocktail-grid">
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-cocktail"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Mojito Gallego</h4>
-                            <p>Ron blanco, hierbabuena fresca de nuestro huerto, lima y agua con gas. Un clásico con toque local.</p>
-                        </div>
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Así es como trabajamos</h2>
+            <p class="section-subtitle">Un proceso simple y transparente que garantiza resultados</p>
+
+            <div class="process-grid">
+                <div class="process-card fade-in">
+                    <div class="process-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-compass">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                        </svg>
                     </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-glass-martini"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Timón Sunset</h4>
-                            <p>Gin premium, zumo de naranja natural, granadina y toque de canela. Perfecto para el atardecer.</p>
-                        </div>
+                    <h3>1. Entendemos tus metas</h3>
+                    <p>Analizamos tu negocio, audiencia y competencia para definir objetivos claros y una estrategia ganadora para tu presencia online.</p>
+                </div>
+
+                <div class="process-card fade-in">
+                    <div class="process-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trello">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <rect x="7" y="7" width="3" height="9"></rect>
+                            <rect x="14" y="7" width="3" height="5"></rect>
+                        </svg>
                     </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-wine-glass-alt"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Caipirinha de Kiwi</h4>
-                            <p>Cachaza brasileña, kiwi fresco, azúcar moreno y mucho hielo. Refrescante y tropical.</p>
-                        </div>
+                    <h3>2. Diseñamos y construimos tu web</h3>
+                    <p>Creamos un diseño único que refleja la identidad de tu marca. Luego, desarrollamos una web optimizada y fácil de usar en todos los dispositivos.</p>
+                </div>
+
+                <div class="process-card fade-in">
+                    <div class="process-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
                     </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-cocktail"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Bloody Mary Especiado</h4>
-                            <p>Vodka premium, zumo de tomate, salsa worcestershire y nuestro toque secreto de especias.</p>
-                        </div>
+                    <h3>3. Lanzamos tu proyecto y te acompañamos</h3>
+                    <p>Una vez que la web está lista, la publicamos. Te proporcionamos tutoriales para que sepas cómo gestionar el contenido. Te damos soporte y mantenimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ejemplos" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Nuestros Trabajos</h2>
+            <p class="section-subtitle">Descubre cómo ayudamos a negocios como el tuyo a crecer online</p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image" style="background-image: url('images/restaurante_vexel.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-question">¿Tienes un restaurante?</h3>
+                        <p class="portfolio-description">Diseños gastronómicos que despiertan el apetito y facilitan las reservas online.</p>
+                        <ul class="portfolio-features">
+                            <li>Menú digital interactivo</li>
+                            <li>Sistema de reservas online</li>
+                            <li>Galería de platos profesional</li>
+                            <li>Integración con redes sociales</li>
+                        </ul>
+                        <a href="https://scompi-stack.github.io/eltimon/" class="portfolio-cta">Ver caso completo de restaurante</a>
                     </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-glass-whiskey"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Old Fashioned Ahumado</h4>
-                            <p>Whiskey bourbon, azúcar demerara, bitter de naranja y toque ahumado con madera de roble.</p>
-                        </div>
+                </div>
+
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image" style="background-image: url('images/bar_vexel.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-question">¿Gestionas un bar o cafetería?</h3>
+                        <p class="portfolio-description">Webs con personalidad que reflejan el ambiente único de tu establecimiento.</p>
+                        <ul class="portfolio-features">
+                            <li>Calendario de eventos</li>
+                            <li>Promociones destacadas</li>
+                            <li>Ambiente y decoración</li>
+                            <li>Ubicación y horarios</li>
+                        </ul>
+                        <a href="bar.html" class="portfolio-cta">Ver caso completo de bar</a>
                     </div>
-                    <div class="cocktail-card">
-                        <div class="cocktail-image">
-                            <i class="fas fa-cocktail"></i>
-                        </div>
-                        <div class="cocktail-info">
-                            <h4>Piña Colada Premium</h4>
-                            <p>Ron añejo, leche de coco fresca, piña natural y un toque de vainilla. Cremoso y exótico.</p>
-                        </div>
+                </div>
+
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image" style="background-image: url('images/gimnasio_vexel.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-question">¿Diriges un gimnasio?</h3>
+                        <p class="portfolio-description">Páginas dinámicas que motivan y convierten visitantes en miembros activos.</p>
+                        <ul class="portfolio-features">
+                            <li>Horarios de clases</li>
+                            <li>Planes de membresía</li>
+                            <li>Galería de instalaciones</li>
+                            <li>Testimonios de miembros</li>
+                        </ul>
+                        <a href="gimnasio.html" class="portfolio-cta">Ver caso completo de gimnasio</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Menu Section -->
-        <section id="menu" class="section menu-section">
-            <div class="container">
-                <h2 class="section-title">Nuestra Carta</h2>
-                <div class="menu-categories">
-                    <!-- Para compartir, o no... -->
-                    <div class="menu-category">
-                        <h3>Para compartir, o no...</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Tabla de Ibéricos</h4>
-                                    <p>Selección de jamón ibérico, chorizo, lomo y queso curado con pan tostado y tomate.</p>
-                                    <div class="allergens">
-                                        <span class="allergen-icon" title="Gluten">G</span>
-                                        <span class="allergen-icon" title="Lácteos">L</span>
-                                    </div>
-                                    <div class="menu-item-price">18,50€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-fish"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Croquetas de Jamón</h4>
-                                    <p>8 unidades de croquetas caseras de jamón ibérico con bechamel artesanal.</p>
-                                    <div class="allergens">
-                                        <span class="allergen-icon" title="Gluten">G</span>
-                                        <span class="allergen-icon" title="Lácteos">L</span>
-                                        <span class="allergen-icon" title="Huevo">H</span>
-                                    </div>
-                                    <div class="menu-item-price">12,90€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-pepper-hot"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Pimientos de Padrón</h4>
-                                    <p>Pimientos del Padrón fritos con sal gorda. Unos pican y otros no.</p>
-                                    <div class="menu-item-price">8,50€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <section id="contacto" class="final-cta">
+        <div class="container">
+            <h2 class="section-title">¿Listo para hacer crecer tu negocio online?</h2>
+            <p class="section-subtitle">Solicita tu presupuesto personalizado sin compromiso. Te respondemos en menos de 24 horas.</p>
 
-                    <!-- Nuestras Carnes -->
-                    <div class="menu-category">
-                        <h3>Nuestras Carnes</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-fire"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Chuletón de Buey</h4>
-                                    <p>Chuletón de buey gallego madurado, cocinado a la brasa. Peso aproximado 800g.</p>
-                                    <div class="menu-item-price">45,00€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-drumstick-bite"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Solomillo de Ternera</h4>
-                                    <p>Solomillo de ternera gallega a la plancha con salsa de vino tinto y patatas panaderas.</p>
-                                    <div class="menu-item-price">28,90€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-bacon"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Secreto Ibérico</h4>
-                                    <p>Secreto de cerdo ibérico a la brasa con pimientos asados y chimichurri casero.</p>
-                                    <div class="menu-item-price">22,50€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Para los más golosos -->
-                    <div class="menu-category">
-                        <h3>Para los más golosos</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-birthday-cake"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Tarta de Queso</h4>
-                                    <p>Tarta de queso casera con mermelada de frutos rojos y crujiente de galleta.</p>
-                                    <div class="allergens">
-                                        <span class="allergen-icon" title="Gluten">G</span>
-                                        <span class="allergen-icon" title="Lácteos">L</span>
-                                        <span class="allergen-icon" title="Huevo">H</span>
-                                    </div>
-                                    <div class="menu-item-price">7,50€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-ice-cream"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Flan de Huevo</h4>
-                                    <p>Flan de huevo tradicional con caramelo líquido y nata montada.</p>
-                                    <div class="allergens">
-                                        <span class="allergen-icon" title="Lácteos">L</span>
-                                        <span class="allergen-icon" title="Huevo">H</span>
-                                    </div>
-                                    <div class="menu-item-price">6,90€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-cookie"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Torrija con Helado</h4>
-                                    <p>Torrija casera con canela y helado de vainilla, regada con miel de castaño.</p>
-                                    <div class="allergens">
-                                        <span class="allergen-icon" title="Gluten">G</span>
-                                        <span class="allergen-icon" title="Lácteos">L</span>
-                                        <span class="allergen-icon" title="Huevo">H</span>
-                                    </div>
-                                    <div class="menu-item-price">8,20€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Nuestros Vinos -->
-                    <div class="menu-category">
-                        <h3>Nuestros Vinos</h3>
-                        <div class="menu-items">
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-wine-bottle"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Albariño Rías Baixas</h4>
-                                    <p>Vino blanco D.O. Rías Baixas, fresco y afrutado, perfecto para mariscos.</p>
-                                    <div class="menu-item-price">18,50€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-wine-glass"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Mencía Bierzo</h4>
-                                    <p>Vino tinto D.O. Bierzo, elegante y con cuerpo, ideal para carnes rojas.</p>
-                                    <div class="menu-item-price">22,00€</div>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <div class="menu-item-image">
-                                    <i class="fas fa-wine-glass-alt"></i>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h4>Ribeiro Blanco</h4>
-                                    <p>Vino blanco D.O. Ribeiro, mineral y fresco, excelente para aperitivos.</p>
-                                    <div class="menu-item-price">16,90€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <form class="cta-form" id="contact-form">
+                <div class="form-group">
+                    <label for="business-name">Nombre del negocio</label>
+                    <input type="text" id="business-name" name="business-name" required>
                 </div>
-            </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <h2 class="section-title">Contacto</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Información de Contacto</h3>
-                        <div class="contact-details">
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong><br>
-                            Paseo Praia de Silgar, 34<br>
-                            36960 Sanxenxo, Pontevedra</p>
-                            
-                            <p><i class="fas fa-phone"></i> <strong>Teléfono:</strong><br>
-                            657 777 977</p>
-                            
-                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong><br>
-                            info@koalarestclub.com</p>
-                        </div>
-
-                        <div class="schedule">
-                            <h4>Horarios de Invierno</h4>
-                            <p><strong>Lunes a Jueves:</strong> 12:00 - 16:00 | 19:00 - 23:30</p>
-                            <p><strong>Viernes a Domingo:</strong> 12:00 - 16:00 | 19:00 - 00:30</p>
-                            
-                            <h4>Horarios de Verano</h4>
-                            <p><strong>Lunes a Jueves:</strong> 12:00 - 16:30 | 19:00 - 01:00</p>
-                            <p><strong>Viernes a Domingo:</strong> 12:00 - 16:30 | 19:00 - 02:00</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-form">
-                        <h3>Formulario de Contacto</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Nombre *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Teléfono *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Mensaje</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Escribe tu consulta o solicitud de reserva..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="cta-button">Enviar Mensaje</button>
-                            
-                            <div class="privacy-notice">
-                                <p>Al enviar este formulario, acepta que sus datos personales sean tratados conforme a nuestra Política de Privacidad para gestionar su consulta.</p>
-                            </div>
-                        </form>
-                    </div>
+                <div class="form-group">
+                    <label for="tipo-negocio">Tipo Negocio</label>
+                    <input type="text" id="tipo_negocio" name="tipo_negocio" required>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Teléfono (opcional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Cuéntanos sobre tu proyecto</label>
+                    <textarea id="message" name="message" placeholder="Describe brevemente qué necesitas para tu negocio..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Solicitar presupuesto gratuito</button>
+                <p class="guarantee">✓ Sin compromiso - Respuesta en 24h</p>
+            </form>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Paseo Praia de Silgar, 34</p>
-                    <p>36960 Sanxenxo, Pontevedra</p>
-                    <a href="tel:657777977">657 777 977</a>
-                    <a href="mailto:info@koalarestclub.com">info@koalarestclub.com</a>
+                    <h3>Contacto</h3>
+                    <p>📧 anashe@gmail.com</p>
+                    <p>📞 +34 111 222 333</p>
+                    <p>📍 Galicia, España</p>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
+                    <h3>Legal</h3>
                     <a href="#">Aviso Legal</a>
                     <a href="#">Política de Privacidad</a>
                     <a href="#">Política de Cookies</a>
-                    <a href="#">Área Interna</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Reservas</h4>
-                    <a href="tel:657777977" class="footer-phone">
-                        <i class="fas fa-phone"></i> 657 777 977
-                    </a>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>&copy; 2025 El Timón - Todos los derechos reservados | Páxinas Galegas</p>
+                <p>&copy; 2025 Vexel. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <button class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)">&#8249;</button>
-            <img id="lightbox-img" src="" alt="">
-            <button class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)">&#8250;</button>
-        </div>
-    </div>
-
     <script>
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
 
-        mobileMenuBtn.addEventListener('click', function() {
+        menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Close mobile menu when clicking on a link
+        navMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                navMenu.classList.remove('active');
             }
         });
 
-        // Gallery functionality
-        const galleryImages = [
-            'images/ejemplo1.jpg',
-            'images/ejemplo2.jpg',
-            'images/ejemplo3.jpg',
-            'images/ejemplo4.jpg',
-            'images/ejemplo5.jpg'
-        ];
-
-        let currentImageIndex = 0;
-
-        function openLightbox(index) {
-            currentImageIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.src = galleryImages[index];
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeLightboxImage(direction) {
-            currentImageIndex += direction;
-            
-            if (currentImageIndex >= galleryImages.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = galleryImages.length - 1;
-            }
-            
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = galleryImages[currentImageIndex];
-        }
-
-        // Close lightbox with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                changeLightboxImage(-1);
-            } else if (e.key === 'ArrowRight') {
-                changeLightboxImage(1);
-            }
-        });
-
-        // Close lightbox clicking outside image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        // Section navigation functionality
-        function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Show selected section
-            const targetSection = document.getElementById(sectionName);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            // Close mobile menu if open
-            navMenu.classList.remove('active');
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Form submission
-        const contactForm = document.querySelector('.contact-form form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-                this.reset();
-            });
-        }
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
 
-        // Smooth animations on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.experience-card, .suggestion-card, .menu-item, .cocktail-card, .gallery-item');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                } else {
-                    element.style.opacity = '0.3';
-                    element.style.transform = 'translateY(30px)';
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
+        });
+
+        // Form submission with enhanced validation and feedback
+        const contactForm = document.getElementById('contact-form');
+
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                const errorMsg = field.parentNode.querySelector('.error-message');
+
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff4757';
+
+                    if (!errorMsg) {
+                        const error = document.createElement('span');
+                        error.className = 'error-message';
+                        error.style.cssText = 'color: #ff4757; font-size: 0.9rem; margin-top: 0.5rem; display: block;';
+                        error.textContent = 'Este campo es obligatorio';
+                        field.parentNode.appendChild(error);
+                    }
+                } else {
+                    field.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    if (errorMsg) {
+                        errorMsg.remove();
+                    }
+                }
+            });
+
+            return isValid;
         }
 
-        // Initialize animations
-        window.addEventListener('scroll', animateOnScroll);
-        document.addEventListener('DOMContentLoaded', animateOnScroll);
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        // Initialize elements with animation styles
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.experience-card, .suggestion-card, .menu-item, .cocktail-card, .gallery-item');
-            animatedElements.forEach(element => {
-                element.style.transition = 'all 0.6s ease';
+            if (!validateForm(this)) {
+                return;
+            }
+
+            const submitButton = this.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+
+            // Show loading state
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+            submitButton.style.opacity = '0.7';
+
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #FF007F, #FF0099);
+                    color: white;
+                    padding: 3rem;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 50px rgba(255, 0, 127, 0.3);
+                    z-index: 10000;
+                    text-align: center;
+                    max-width: 400px;
+                    backdrop-filter: blur(20px);
+                `;
+                successMsg.innerHTML = `
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">¡Mensaje enviado!</h3>
+                    <p style="opacity: 0.9;">Te responderemos en menos de 24 horas.</p>
+                `;
+
+                document.body.appendChild(successMsg);
+
+                // Remove success message after 4 seconds
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 4000);
+
+                this.reset();
+            }, 2500);
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
             });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Enhanced header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const scrolled = window.pageYOffset;
+
+            if (scrolled > 100) {
+                header.style.background = 'rgba(38, 38, 38, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(255, 0, 127, 0.2)';
+            } else {
+                header.style.background = 'rgba(38, 38, 38, 0.95)';
+                header.style.boxShadow = '0 4px 30px rgba(255, 0, 127, 0.1)';
+            }
+        });
+
+        // Add ripple effect to buttons
+        function addRippleEffect(button) {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+
+        // CSS for ripple animation
+        const rippleCSS = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = rippleCSS;
+        document.head.appendChild(rippleStyle);
+
+        // Apply ripple effect to all buttons
+        document.querySelectorAll('.cta-button, .submit-button, .portfolio-cta').forEach(addRippleEffect);
+
+        // Dynamic gradient animation for hero background
+        function animateGradient() {
+            const hero = document.querySelector('.hero');
+            let angle = 135;
+
+            setInterval(() => {
+                angle += 0.5;
+                hero.style.background = `linear-gradient(${angle}deg, #262626 0%, #404040 100%)`;
+            }, 50);
+        }
+
+        // Initialize gradient animation after load
+        setTimeout(animateGradient, 2000);
+
+        // Enhanced device mockup interactions
+        document.querySelectorAll('.device-mockup').forEach((device, index) => {
+            device.addEventListener('mouseenter', () => {
+                device.style.animation = 'none';
+                device.style.transform = 'translateY(-20px) scale(1.1) rotateY(0deg)';
+            });
+
+            device.addEventListener('mouseleave', () => {
+                device.style.animation = `floating 4s ease-in-out infinite ${index}s`;
+            });
+        });
+
+        // Add floating particles effect (optional enhancement)
+        function createFloatingParticles() {
+            const hero = document.querySelector('.hero');
+
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 0, 127, 0.3);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: floatParticle ${5 + Math.random() * 5}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                hero.appendChild(particle);
+            }
+        }
+
+        // CSS for particle animation
+        const particleCSS = `
+            @keyframes floatParticle {
+                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+                50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+            }
+        `;
+
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = particleCSS;
+        document.head.appendChild(particleStyle);
+
+        // Initialize particles after page load
+        setTimeout(createFloatingParticles, 1500);
+
+        // Smooth reveal animation for sections
+        const sections = document.querySelectorAll('section');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            sectionObserver.observe(section);
         });
     </script>
 </body>
