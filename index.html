@@ -96,6 +96,16 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Main Content */
         .main-content {
             margin-top: 80px;
@@ -104,6 +114,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
+            min-height: 600px;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('images/header_restaurante.jpg');
             background-size: cover;
             background-position: center;
@@ -265,6 +276,12 @@
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.8;
+        }
+
+        .location-content iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
         }
 
         /* Gallery Section */
@@ -496,15 +513,15 @@
 
         .menu-item-image {
             height: 150px;
-            background: none; /* Se elimina el gradiente de fondo */
-            display: block; /* Se cambia a block para evitar el flex */
-            overflow: hidden; /* Oculta cualquier parte de la imagen que se salga */
+            background: none;
+            display: block;
+            overflow: hidden;
         }
         
         .menu-item-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Esta propiedad es la clave */
+            object-fit: cover;
         }
 
         .menu-item-content {
@@ -691,18 +708,21 @@
             margin-bottom: 1rem;
         }
 
-        /* Mobile Navigation */
-        .mobile-menu-btn {
+        /* Section visibility */
+        .section {
             display: none;
-            background: none;
-            border: none;
-            color: var(--primary-white);
-            font-size: 1.5rem;
-            cursor: pointer;
+        }
+
+        .section.active {
+            display: block;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
             .mobile-menu-btn {
                 display: block;
             }
@@ -717,30 +737,81 @@
                 flex-direction: column;
                 padding: 2rem;
                 gap: 1rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.8);
             }
 
             .nav-menu.active {
                 display: flex;
             }
 
+            .phone-contact {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                background-attachment: scroll;
+                min-height: 70vh;
+                height: auto;
+                padding: 2rem 0;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
+                margin-bottom: 0.8rem;
             }
 
             .hero-content .tagline {
                 font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .experience, .suggestions, .location, .gallery-section, 
+            .cocktail-section, .menu-section, .contact-section {
+                padding: 4rem 0;
             }
 
             .experience-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .suggestions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .location-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .location-content iframe {
+                height: 300px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .cocktail-grid, .menu-items {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .contact-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .footer-content {
@@ -751,15 +822,108 @@
             .social-links {
                 justify-content: center;
             }
+
+            /* Lightbox mobile adjustments */
+            .lightbox-close {
+                top: -30px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: -45px;
+            }
+
+            .lightbox-next {
+                right: -45px;
+            }
+
+            /* Form adjustments */
+            .form-group input,
+            .form-group textarea {
+                padding: 0.6rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .menu-category h3 {
+                font-size: 1.5rem;
+            }
+
+            .experience-card, .suggestion-card, .cocktail-card {
+                padding: 1.5rem;
+            }
+
+            .experience-icon {
+                font-size: 2.5rem;
+            }
         }
 
-        /* Section visibility */
-        .section {
-            display: none;
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestions-grid,
+            .cocktail-grid,
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-prev {
+                left: -35px;
+            }
+
+            .lightbox-next {
+                right: -35px;
+            }
+
+            .nav-menu {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
         }
 
-        .section.active {
-            display: block;
+        /* Performance optimizations */
+        .gallery-item img,
+        .suggestion-image img,
+        .cocktail-image img,
+        .menu-item-image img {
+            will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -915,7 +1079,7 @@
                             <i class="fas fa-search-plus"></i>
                         </div>
                     </div>
-					<div class="gallery-item" onclick="openLightbox(3)">
+					<div class="gallery-item" onclick="openLightbox(5)">
                         <img src="images/ejemplo6.jpg" alt="Interior del restaurante">
                         <div class="gallery-overlay">
                             <i class="fas fa-search-plus"></i>
@@ -976,7 +1140,7 @@
                     </div>
                     <div class="cocktail-card">
                         <div class="cocktail-image">
-                            <img src="images\pina_colada.jpeg" alt="Piña Colada Premium">
+                            <img src="images/pina_colada.jpeg" alt="Piña Colada Premium">
                         </div>
                         <div class="cocktail-info">
                             <h4>Piña Colada Premium</h4>
@@ -1301,7 +1465,8 @@
             'images/ejemplo2.jpg',
             'images/ejemplo3.jpg',
             'images/ejemplo4.jpg',
-            'images/ejemplo5.jpg'
+            'images/ejemplo5.jpg',
+            'images/ejemplo6.jpg'
         ];
 
         let currentImageIndex = 0;
@@ -1413,6 +1578,24 @@
                 element.style.transition = 'all 0.6s ease';
             });
         });
+
+        // Optimize touch interactions for mobile
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+            
+            // Disable hover effects on touch devices
+            const hoverElements = document.querySelectorAll('.gallery-item, .suggestion-card, .cocktail-card, .menu-item');
+            hoverElements.forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                });
+                element.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.classList.remove('touch-active');
+                    }, 300);
+                });
+            });
+        }
     </script>
 </body>
 </html>
